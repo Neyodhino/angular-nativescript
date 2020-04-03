@@ -1,7 +1,62 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Prediction"></Label>
-</ActionBar>
+<FlexboxLayout class="page">
+    <StackLayout class="form">
+        <Image class="logo" src="~/app/images/logo.png"></Image>
+        <Label class="header" text="BLACK POD DISEASE"></Label>
 
-<GridLayout class="page">
-    <!-- Add your page content here -->
-</GridLayout>
+        <PreviousNextView>
+            <GridLayout rows="auto, auto, auto, auto, auto">
+                <StackLayout row="0" class="input-field">
+                    <TextField class="input" hint="Name" [isEnabled]="!processing"
+                        keyboardType="email" autocorrect="false"
+                        autocapitalizationType="none" [(ngModel)]="user.email"
+                        returnKeyType="next" (returnPress)="focusPassword()"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <StackLayout row="1" class="input-field">
+                    <TextField class="input" hint="Age" [isEnabled]="!processing"
+                        keyboardType="email" autocorrect="false"
+                        autocapitalizationType="none" [(ngModel)]="user.email"
+                        returnKeyType="next" (returnPress)="focusPassword()"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <StackLayout row="2" class="input-field">
+                    <TextField class="input" hint="Residence" [isEnabled]="!processing"
+                        keyboardType="email" autocorrect="false"
+                        autocapitalizationType="none" [(ngModel)]="user.email"
+                        returnKeyType="next" (returnPress)="focusPassword()"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <StackLayout row="3" class="input-field">
+                    <TextField class="input" hint="Phone Number" [isEnabled]="!processing"
+                        keyboardType="email" autocorrect="false"
+                        autocapitalizationType="none" [(ngModel)]="user.email"
+                        returnKeyType="next" (returnPress)="focusPassword()"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <StackLayout row="4" class="input-field">
+                    <TextField class="input" hint="Farming Location" [isEnabled]="!processing"
+                        keyboardType="email" autocorrect="false"
+                        autocapitalizationType="none" [(ngModel)]="user.email"
+                        returnKeyType="next" (returnPress)="focusPassword()"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <ActivityIndicator rowSpan="3" [busy]="processing"></ActivityIndicator>
+            </GridLayout>
+        </PreviousNextView>
+
+        <Button text = "Register" [isEnabled]="!processing"
+            (tap)="submit()" class="btn btn-primary m-t-20"></Button>
+    </StackLayout>
+
+    <Label class="login-label sign-up-label" (tap)="toggleForm()">
+        <FormattedString>
+            <Span [text]="isLoggingIn ? 'Don’t have an account? ' : 'Back to Login'"></Span>
+            <Span [text]="isLoggingIn ? 'Sign up' : ''" class="bold"></Span>
+        </FormattedString>
+    </Label>
+</FlexboxLayout>
