@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "715782410368",
+    "firebase_url": "https://blackpod-ca81d.firebaseio.com",
+    "project_id": "blackpod-ca81d",
+    "storage_bucket": "blackpod-ca81d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715782410368:android:bd754524a7cb3446f8d665",
+        "android_client_info": {
+          "package_name": "org.nativescript.cocoaprediction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715782410368-96k709k6cg438vtpf3qcc6ggjanq652v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNiKoYUwvNGB2WPY2lkrVcWn5S6OL8wIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715782410368-96k709k6cg438vtpf3qcc6ggjanq652v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

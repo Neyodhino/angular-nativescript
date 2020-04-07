@@ -22,7 +22,7 @@ declare var android: any;
 })
 export class WelcomeComponent implements AfterViewInit {
     private slidesPath = 'pages/welcome/slides';
-    private slideFiles = ['slide1.xml', 'slide2.xml', 'slide3.xml'];
+    // private slideFiles = ['slide1.xml', 'slide2.xml', 'slide3.xml'];
 
     private currentSlideNum: number = 0;
     private slideCount = 3;

@@ -2,9 +2,10 @@ import { Component, ElementRef, ViewChild } from "@angular/core";
 import { alert, prompt } from "tns-core-modules/ui/dialogs";
 import { Page } from "tns-core-modules/ui/page";
 import { RouterExtensions } from "nativescript-angular/router";
+import { exit } from "nativescript-exit";
 
 import { User } from "../shared/user.model";
-// import { UserService } from "../shared/user.service";
+import { UserService } from "../shared/user.service";
 
 @Component({
     selector: "app-login",
@@ -19,94 +20,66 @@ export class HomeComponent {
     @ViewChild("password", {static: false}) password: ElementRef;
     @ViewChild("confirmPassword", {static: false}) confirmPassword: ElementRef;
 
-    constructor(private page: Page, private routerExtensions: RouterExtensions) {
+    constructor(private page: Page, private routerExtensions: RouterExtensions, private userService: UserService) {
         this.page.actionBarHidden = true;
         this.user = new User();
-        this.user.email = "user@nativescript.org";
-        this.user.password = "password";
-    }
-
-    toggleForm() {
-        this.isLoggingIn = !this.isLoggingIn;
+        this.user.name = "" ;
+        this.user.age = null;
+        this.user.farmingLocation = "";
+        this.user.residence = ""
+        this.user.phoneNumber = null;
     }
 
     submit() {
-        if (!this.user.email || !this.user.password) {
-            this.alert("Please provide both an email address and password.");
+        if (
+            !this.user.name || !this.user.age || !this.user.residence ||
+            !this.user.phoneNumber || !this.user.farmingLocation
+            ) {
+            this.alert(false, "Please fill all fields as all fields are required");
             return;
         }
 
         this.processing = true;
-        if (this.isLoggingIn) {
-            this.login();
-        } else {
-            this.register();
-        }
-    }
-
-    login() {
-        // this.userService.login(this.user)
-        //     .then(() => {
-        //         this.processing = false;
-        //         this.routerExtensions.navigate(["/home"], { clearHistory: true });
-        //     })
-        //     .catch(() => {
-        //         this.processing = false;
-        //         this.alert("Unfortunately we could not find your account.");
-        //     });
+        this.register();
     }
 
     register() {
-        // if (this.user.password != this.user.confirmPassword) {
-        //     this.alert("Your passwords do not match.");
-        //     return;
-        // }
-        // this.userService.register(this.user)
-        //     .then(() => {
-        //         this.processing = false;
-        //         this.alert("Your account was successfully created.");
-        //         this.isLoggingIn = true;
-        //     })
-        //     .catch(() => {
-        //         this.processing = false;
-        //         this.alert("Unfortunately we were unable to create your account.");
-        //     });
+        this.userService.register(this.user)
+            .subscribe((response) => {
+                console.log(response)
+                this.processing = false;
+                this.alert(true, "Your account was successfully created. Notifications will be sent to you periodically to give you update on black-pox disease and some preventive measures you can take. You can now close the application");
+                this.clearInputFields()
+            },(error) => {
+                console.error(error)
+                this.processing = false;
+                this.alert(false, "Unfortunately we were unable to create your account.");
+                this.clearInputFields()
+            });
     }
 
-    forgotPassword() {
-        // prompt({
-        //     title: "Forgot Password",
-        //     message: "Enter the email address you used to register for APP NAME to reset your password.",
-        //     inputType: "email",
-        //     defaultText: "",
-        //     okButtonText: "Ok",
-        //     cancelButtonText: "Cancel"
-        // }).then((data) => {
-        //     if (data.result) {
-        //         this.userService.resetPassword(data.text.trim())
-        //             .then(() => {
-        //                 this.alert("Your password was successfully reset. Please check your email for instructions on choosing a new password.");
-        //             }).catch(() => {
-        //                 this.alert("Unfortunately, an error occurred resetting your password.");
-        //             });
-        //     }
-        // });
+    clearInputFields(){
+        this.user.name = "" ;
+        this.user.age = null;
+        this.user.farmingLocation = "";
+        this.user.residence = ""
+        this.user.phoneNumber = null;
     }
 
-    focusPassword() {
-        this.password.nativeElement.focus();
-    }
-    focusConfirmPassword() {
-        if (!this.isLoggingIn) {
-            this.confirmPassword.nativeElement.focus();
+    alert(closeApp: boolean, message: string) {
+        if(!closeApp){
+            return alert({
+                title: "BLACK-POD DISEASE",
+                okButtonText: "OK",
+                message: message
+            })
         }
-    }
-
-    alert(message: string) {
         return alert({
-            title: "APP NAME",
+            title: "BLACK-POD DISEASE",
             okButtonText: "OK",
             message: message
+        }).then(()=> {
+            exit()
         });
     }
 }
