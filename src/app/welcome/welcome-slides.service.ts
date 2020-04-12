@@ -22,7 +22,7 @@ export class WelcomeSlidesService {
 <GridLayout class="carousel-item-circle" row="1" horizontalAlignment="center" verticalAlignment="center">
     <Label class="fa carousel-item-icon" text="&#xf1d8;" textWrap="true"></Label>
 </GridLayout>
-<GridLayout width="49%" row="2" horizontalAlignment="center" verticalAlignment="center">
+<GridLayout width="49%" row="2" horizontalAlignment="center" verticalAlignment="center" marginTop="5">
     <Label class="opensans-regular carousel-item-desc" text="Get quick and trusted information about blackpod disease outbreak and solution" textWrap="true"></Label>
 </GridLayout>
 </GridLayout>

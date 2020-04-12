@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
+import * as appSettings from "tns-core-modules/application-settings";
 
 import { Page, ContentView } from "tns-core-modules/ui/page/page";
 import { SwipeGestureEventData } from "tns-core-modules/ui/gestures/gestures";
 import { GridLayout, GridUnitType, ItemSpec } from "tns-core-modules/ui/layouts/grid-layout";
 import { AnimationDefinition, Animation } from "tns-core-modules/ui/animation";
 import { screen, isAndroid, device } from "tns-core-modules/platform";
+import { UserService } from '../shared/user.service';
 
 import * as app from "tns-core-modules/application";
 import * as fs from "tns-core-modules/file-system";
@@ -20,12 +22,13 @@ declare var android: any;
     moduleId: module.id,
     templateUrl: "./welcome.component.html"
 })
-export class WelcomeComponent implements AfterViewInit {
+export class WelcomeComponent implements AfterViewInit, OnInit {
     private slidesPath = 'pages/welcome/slides';
     // private slideFiles = ['slide1.xml', 'slide2.xml', 'slide3.xml'];
 
     private currentSlideNum: number = 0;
     private slideCount = 3;
+    public showButton: boolean = false;
 
     private screenWidth;
     private slidesView: GridLayout;
@@ -36,7 +39,8 @@ export class WelcomeComponent implements AfterViewInit {
     constructor(
         private page: Page,
         private nav: RouterExtensions,
-        private slidesService: WelcomeSlidesService
+        private slidesService: WelcomeSlidesService,
+        private userService: UserService
     ) {
         this.screenWidth = screen.mainScreen.widthDIPs;
 
@@ -55,7 +59,17 @@ export class WelcomeComponent implements AfterViewInit {
         }
     }
 
-    ngAfterViewInit() {
+    ngOnInit(): void {
+        if(this.userService.queryLocalStorage() !== undefined){
+            this.showButton = false;
+            console.log('You are already registered');
+        }else{
+            this.showButton = true;
+            console.log('You are yet to register');
+        }
+    }
+
+    ngAfterViewInit(): void {
         this.page.actionBarHidden = true;
         this.page.cssClasses.add("welcome-page-background");
         this.page.backgroundSpanUnderStatusBar = true;
@@ -90,6 +104,9 @@ export class WelcomeComponent implements AfterViewInit {
     skipIntro() {
         // this.nav.navigate(["/home"], { clearHistory: true });
         this.nav.navigate(["/home"]);
+    }
+    skipIntro2() {
+        console.log(appSettings.remove('notification'));
     }
 
     onSwipe(args: SwipeGestureEventData) {

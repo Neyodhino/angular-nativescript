@@ -46,14 +46,14 @@ export class HomeComponent {
     register() {
         this.userService.register(this.user)
             .subscribe((response) => {
-                console.log(response)
                 this.processing = false;
-                this.alert(true, "Your account was successfully created. Notifications will be sent to you periodically to give you update on black-pox disease and some preventive measures you can take. You can now close the application");
-                this.clearInputFields()
+                this.alert(true, 'Your account was successfully created. Notifications will be sent to you periodically to give you update on black-pox disease and some preventive measures you can take. The app will be closed immediately you click on OK button. Thanks');
+                this.userService.saveData('user', 'Registered');
+                this.clearInputFields();
             },(error) => {
                 console.error(error)
                 this.processing = false;
-                this.alert(false, "Unfortunately we were unable to create your account.");
+                this.alert(false, "Sorry, we were unable to create your account, this may be due to network connectivity. Please Re-try.");
                 this.clearInputFields()
             });
     }
