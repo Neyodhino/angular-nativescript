@@ -24,7 +24,7 @@ components that have the btn class name.
 
 .opensans-semi-bold {
     font-family: 'Open Sans', 'OpenSans-SemiBold';
-    font-weight: 600;
+    font-weight: bold;
 }
 
 .lobster-regular {
@@ -33,7 +33,14 @@ components that have the btn class name.
 }
 
 .welcome-page-background {
-    background: linear-gradient(180deg, #E87401, #D05427);
+    background: linear-gradient(180deg, #659D32, #7CFC00);
+}
+
+.home-page-background {
+    background-image: url('~/app/images/background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .caro-item-dot {
@@ -50,8 +57,9 @@ components that have the btn class name.
 .skip-intro {
     width: 65%;
     font-size: 18;
+    font-weight: bold;
     border-width: 6;
-    border-color:#FFC526;
+    border-color: #CE5310;
     background-color:#FFFFFF;
     color:#0C7DA7;
     border-radius: 4;
@@ -65,7 +73,7 @@ components that have the btn class name.
   }
 
   .carousel-item-desc {
-      font-size: 15;
+      font-size: 16;
       color: #FFFFFF;
       text-align: center;
   }

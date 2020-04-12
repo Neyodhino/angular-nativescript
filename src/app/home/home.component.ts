@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import { Component, ElementRef, ViewChild, OnInit, AfterViewInit } from "@angular/core";
 import { alert, prompt } from "tns-core-modules/ui/dialogs";
 import { Page } from "tns-core-modules/ui/page";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -13,7 +13,7 @@ import { UserService } from "../shared/user.service";
     templateUrl: "./home.component.html",
     styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, AfterViewInit {
     isLoggingIn = true;
     user: User;
     processing = false;
@@ -29,6 +29,15 @@ export class HomeComponent {
         this.user.residence = ""
         this.user.phoneNumber = null;
     }
+
+    ngOnInit(): void {
+        this.page.cssClasses.add("welcome-page-background");
+    }
+
+    ngAfterViewInit(): void {
+        this.page.cssClasses.add("welcome-page-background");
+    }
+
 
     submit() {
         if (

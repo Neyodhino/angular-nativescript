@@ -10,17 +10,17 @@
 }
 
 .logo {
-  margin-bottom: 12;
-  height: 90;
+  /* margin-bottom: 5; */
+  height: 150;
   font-weight: bold;
 }
 .header {
   horizontal-align: center;
   font-size: 25;
   font-weight: 600;
-  margin-bottom: 70;
+  margin-bottom: 40;
   text-align: center;
-  color: #D51A1A;
+  color: green;
 }
 
 .input-field {
@@ -36,7 +36,8 @@
 }
 
 .btn-primary {
-  margin: 30 5 15 5;
+  margin: 15 5 15 5;
+  background-color: green;
 }
 
 .login-label {

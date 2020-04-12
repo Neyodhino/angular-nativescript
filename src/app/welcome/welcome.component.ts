@@ -71,7 +71,7 @@ export class WelcomeComponent implements AfterViewInit, OnInit {
 
     ngAfterViewInit(): void {
         this.page.actionBarHidden = true;
-        this.page.cssClasses.add("welcome-page-background");
+        this.page.cssClasses.add("home-page-background");
         this.page.backgroundSpanUnderStatusBar = true;
 
         this.slideView = this.slideElement.nativeElement;
@@ -105,8 +105,8 @@ export class WelcomeComponent implements AfterViewInit, OnInit {
         // this.nav.navigate(["/home"], { clearHistory: true });
         this.nav.navigate(["/home"]);
     }
-    skipIntro2() {
-        console.log(appSettings.remove('notification'));
+    navigateToMessages() {
+        this.nav.navigate(['/home']);
     }
 
     onSwipe(args: SwipeGestureEventData) {

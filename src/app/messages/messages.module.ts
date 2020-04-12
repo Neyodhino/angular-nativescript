@@ -16,4 +16,4 @@ import { MessagesComponent } from "./messages.component";
         NO_ERRORS_SCHEMA
     ]
 })
-export class HomeModule { }
+export class MessagesModule { }

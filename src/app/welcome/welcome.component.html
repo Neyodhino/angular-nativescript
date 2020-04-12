@@ -14,7 +14,7 @@
 				<StackLayout [ngClass]="getSliderItemClass(2)" verticalAlignment="top" col="2" horizontalAlignment="left"></StackLayout>
 			</GridLayout>
 			<GridLayout row="1" rows="auto" class="m-t-10" *ngIf="!showButton">
-				<Button text="Notification History" class="opensans-semi-bold skip-intro" (tap)="skipIntro2()"></Button>
+				<Button text="Notification History" class="opensans-semi-bold skip-intro" (tap)="navigateToMessages()"></Button>
 			</GridLayout>
 			<GridLayout row="2" rows="auto" verticalAlignment="bottom" class="m-t-10" *ngIf="showButton">
 				<Button text="Get Started" class="opensans-semi-bold skip-intro" (tap)="skipIntro()"></Button>
