@@ -2,7 +2,6 @@ import { Component, ElementRef, ViewChild, OnInit, AfterViewInit } from "@angula
 import { alert, prompt } from "tns-core-modules/ui/dialogs";
 import { Page } from "tns-core-modules/ui/page";
 import { RouterExtensions } from "nativescript-angular/router";
-import { exit } from "nativescript-exit";
 
 import { User } from "../shared/user.model";
 import { UserService } from "../shared/user.service";
@@ -25,9 +24,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.user = new User();
         this.user.name = "" ;
         this.user.age = null;
-        this.user.farmingLocation = "";
         this.user.residence = ""
-        this.user.phoneNumber = null;
+        this.user.phoneNumber = "";
+        this.user.farmingLocation = "";
     }
 
     ngOnInit(): void {
@@ -57,13 +56,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
             .subscribe((response) => {
                 this.processing = false;
                 this.alert(true, 'Your account was successfully created. Notifications will be sent to you periodically to give you update on black-pox disease and some preventive measures you can take. The app will be closed immediately you click on OK button. Thanks');
-                this.userService.saveData('user', 'Registered');
+                this.userService.saveData('User', 'Registered');
                 this.clearInputFields();
             },(error) => {
                 console.error(error)
                 this.processing = false;
                 this.alert(false, "Sorry, we were unable to create your account, this may be due to network connectivity. Please Re-try.");
-                this.clearInputFields()
             });
     }
 
@@ -88,7 +86,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
             okButtonText: "OK",
             message: message
         }).then(()=> {
-            exit()
+            this.routerExtensions.navigate(['/welcome'])
         });
     }
 }

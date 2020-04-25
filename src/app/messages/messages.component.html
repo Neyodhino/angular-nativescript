@@ -1,4 +1,4 @@
-<ActionBar title="Card Layouts ♣️❤️" class="action-bar">
+<ActionBar title="Notifications" class="action-bar">
 </ActionBar>
 
 <GridLayout>
@@ -6,10 +6,11 @@
 		<StackLayout>
 			<CardView *ngFor="let item of data" class="card" elevation="40" radius="10" ios:shadowRadius="3">
 				<StackLayout class="card-layout">
-					<Label class="h2" [text]="item.heading"></Label>
+					<Label class="h1" [text]="item.heading"></Label>
 					<Label class="body" textWrap="true" [text]="item.content"></Label>
 				</StackLayout>
 			</CardView>
 		</StackLayout>
 	</ScrollView>
 </GridLayout>
+

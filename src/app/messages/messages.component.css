@@ -7,5 +7,9 @@
     padding: 20;
 }
 .card-layout .h1 {
-    margin-bottom: 15;
+    margin-bottom: 17;
+}
+.body {
+    font-size: 15px;
+    line-height: 10px;
 }

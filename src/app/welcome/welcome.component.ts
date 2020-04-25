@@ -60,7 +60,7 @@ export class WelcomeComponent implements AfterViewInit, OnInit {
     }
 
     ngOnInit(): void {
-        if(this.userService.queryLocalStorage() !== undefined){
+        if(this.userService.queryUserLocalStorage() !== undefined){
             this.showButton = false;
             console.log('You are already registered');
         }else{
@@ -106,7 +106,8 @@ export class WelcomeComponent implements AfterViewInit, OnInit {
         this.nav.navigate(["/home"]);
     }
     navigateToMessages() {
-        this.nav.navigate(['/home']);
+        this.nav.navigate(['/messages']);
+        console.log(appSettings.getString('Notifications'))
     }
 
     onSwipe(args: SwipeGestureEventData) {

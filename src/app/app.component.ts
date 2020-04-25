@@ -30,8 +30,7 @@ export class AppComponent {
           },
 
           onMessageReceivedCallback: (message: firebase.Message) => {
-            console.log('[Firebase] onMessageReceivedCallback:', { message });
-            appSettings.setString('notification', message.body);
+            console.log('[Firebase] onMessageReceivedCallback:', {message} );
         }
         })
           .then(() => {
@@ -44,15 +43,32 @@ export class AppComponent {
       }
 
     //   addNotificationToStorage(notification: Inotification) {
-    //     const previousNotification = this.userService.queryLocalStorage();
-    //     if(previousNotification == undefined) {
-    //         let allNotification = []
-    //         JSON.stringify(allNotification.push(notification));
-    //         this.userService.storeNotification('Notification', allNotification);
-    //     }else {
-    //         let storedNotification = JSON.parse(previousNotification);
-    //         let notificationToBeStored= JSON.stringify(storedNotification.push(notification));
-    //         appSettings.setString('Notification', notificationToBeStored);
+        // const previousNotification = this.userService.queryLocalStorage();
+        // if(previousNotification == undefined) {
+        //     let allNotification = []
+        //     allNotification.push(notification);
+        //     appSettings.setString('Notifications', JSON.stringify(allNotification));
+        // } else {
+        //     let storedNotification = JSON.parse(previousNotification);
+        //     let notificationToBeStored= JSON.stringify(storedNotification.push(notification));
+        //     appSettings.setString('Notifications', notificationToBeStored);
+        // }
+    //     const itemStored = appSettings.getString("Notifications");
+    //     const itemSelected = {
+    //         "title": notification.title,
+    //         "body": notification.body,
+    //         "Date": 'April'
+    //     };
+    //     if (itemStored == undefined) {
+    //         let dataStored = [];
+    //         dataStored.push(itemSelected);
+    //         let stringifyData = JSON.stringify(dataStored);
+    //         appSettings.setString("Notifications", stringifyData);
+    //     } else {
+    //         let serialisedData = JSON.parse(itemStored);
+    //         serialisedData.push(itemSelected);
+    //         let sd = JSON.stringify(serialisedData);
+    //         appSettings.setString("Notifications", sd);
     //     }
     // }
  }

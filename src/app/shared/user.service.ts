@@ -17,10 +17,16 @@ export class UserService {
             )
     }
 
-    queryLocalStorage() {
+    queryNotificationLocalStorage() {
         return(
-            appSettings.getString('user')
+            appSettings.getString('Notifications')
         );
+    }
+
+    queryUserLocalStorage() {
+        return (
+            appSettings.getString('User')
+        )
     }
 
     saveData(key: string, value: any){
